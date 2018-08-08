@@ -1,0 +1,29 @@
+<template>
+  <require from="sort"></require>
+  <div class="btn-group" role="group">
+      <button click.delegate="setSortDirection('ascending')" class="btn btn-default btn-xs ${sortDirection === 'ascending' && 'active'}">asc</button>
+      <button click.delegate="setSortDirection('descending')" class="btn btn-default btn-xs ${sortDirection === 'descending' && 'active'}">desc</i></button>
+  </div>
+  <div>
+    <h4>Working</h4>
+    <select value.bind="selectedUser">
+      <option 
+        repeat.for="user of userList | sort:'name':sortDirection"
+        model.bind="user.Id"
+      >
+        ${user.name}
+      </option>
+    </select>
+    <h4>Broken</h4>
+    <select value.bind="selectedUser" size="3">
+      <option 
+        repeat.for="user of userList | sort:'name':sortDirection"
+        model.bind="user.Id"
+      >
+        ${user.name}
+      </option>
+    </select>
+  </div>
+
+  
+</template>
